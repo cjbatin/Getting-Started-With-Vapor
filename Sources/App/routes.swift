@@ -4,8 +4,16 @@ public func routes(_ router: Router) throws {
 
     router.get("api", "name") { req -> String in
         let namesArray = ["Chris", "Sarah", "Bob", "Jess"]
-        let number = Int(arc4random_uniform(4))
+        let number = getRandomNumber(0, 3)
         return "Hello, \(namesArray[number])"
+    }
+
+    func getRandomNumber(_ min: Int, _ max: Int) -> Int {
+        #if os(Linux)
+        return Int(random() % max) + min
+        #else
+        return Int(arc4random_uniform(UInt32(max)) + UInt32(min))
+        #endif
     }
 
     router.get("api", "first_name", String.parameter, "last_name", String.parameter) { req -> String in
