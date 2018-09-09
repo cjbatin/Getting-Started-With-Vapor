@@ -8,14 +8,6 @@ public func routes(_ router: Router) throws {
         return "Hello, \(namesArray[number])"
     }
 
-    func getRandomNumber(_ min: Int, _ max: Int) -> Int {
-        #if os(Linux)
-        return Int(random() % max) + min
-        #else
-        return Int(arc4random_uniform(UInt32(max)) + UInt32(min))
-        #endif
-    }
-
     router.get("api", "first_name", String.parameter, "last_name", String.parameter) { req -> String in
         let firstName = try req.parameters.next(String.self)
         let lastName = try req.parameters.next(String.self)
@@ -29,6 +21,15 @@ public func routes(_ router: Router) throws {
 //    router.post(Person.self, at: "api/name") { req, data -> Person in
 //        return data
 //    }
+}
+
+
+func getRandomNumber(_ min: Int, _ max: Int) -> Int {
+    #if os(Linux)
+    return Int(random() % max) + min
+    #else
+    return Int(arc4random_uniform(UInt32(max)) + UInt32(min))
+    #endif
 }
 
 struct Person: Content {
