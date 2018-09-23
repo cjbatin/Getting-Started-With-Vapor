@@ -1,6 +1,8 @@
 # Getting Started With Vapor
 
-An example project that accompanies my tutorial on Getting Started With Vapor. Tutorial: http://blog.pusher.com/quick-nimble-testing-ios/ 
+An example project that accompanies my tutorial on Getting Started With Vapor Parts 1 and 2.
+https://pusher.com/tutorials/getting-started-vapor-part-one
+https://pusher.com/tutorials/getting-started-vapor-part-two
 
 ## Getting Started
 
